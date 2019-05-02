@@ -60,10 +60,7 @@ public class PokemonHotel {
         
         Scanner scan = new Scanner(System.in);
         
-        InformationCollecter infoCollcter = new InformationCollecter();
-        infoCollcter.outputInfoOnPoke(pokemon);
-        infoCollcter.outputInfoOnrooms(rooms);
-        infoCollcter.outputInfoOnPA(personalAssistants);
+        
         do{
             menu.DisplayOptions();
             menu.HandleInput(scan.nextInt());
