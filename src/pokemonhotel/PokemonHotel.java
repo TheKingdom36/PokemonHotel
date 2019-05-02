@@ -5,9 +5,9 @@
  */
 package pokemonhotel;
 
-import Logical.InformationCollecter;
-import Logical.Menu;
-import Logical.InformationDisplayer;
+import pokemonhotel.Logical.InformationCollecter;
+import pokemonhotel.Logical.Menu;
+import pokemonhotel.Logical.InformationDisplayer;
 import java.util.Scanner;
 import pokemonhotel.Models.PersonalAssistant;
 import pokemonhotel.Models.Pokemon;
