@@ -5,7 +5,6 @@
  */
 package pokemonhotel;
 
-import pokemonhotel.Logical.InformationCollecter;
 import pokemonhotel.Logical.Menu;
 import pokemonhotel.Logical.InformationDisplayer;
 import java.util.Scanner;
@@ -50,11 +49,9 @@ public class PokemonHotel {
         
         setUp.AssignPokemon(pokemon, rooms, personalAssistants);
         
-        for(Room r: rooms){
-            System.out.println(r.toString());
-        }
-         
+       
         InformationDisplayer infoDisplayer = new InformationDisplayer(pokemon,rooms,personalAssistants);
+         
         
         Menu menu = new Menu(infoDisplayer);
         

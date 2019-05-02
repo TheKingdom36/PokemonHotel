@@ -24,11 +24,29 @@ public class InformationDisplayer {
         this.personalAssistant = personalAssistants;
     }
     
+    //Abraham
     public void OutputAllPokemon(){
     
     }
     
-    public void OuputAssignedPokemon(){
+    
+    //Abraham 
+    public void OutputPersonalAssistantsAndAssignedPokemon(){
+    
+    }
+    
+    //Abraham
+    public void OutputRoomContent(int roomNumber){
+    
+    }
+    
+    //Abraham
+    public void OutputPokemonInformation(int GeneticStamp){
+    
+    }
+    
+    
+     public void OuputAssignedPokemon(){
     
     }
     
@@ -40,18 +58,5 @@ public class InformationDisplayer {
     public void OutputTotalNumberOfPokemonHotelCanAccommodate(){
     
     }
-    
-    public void OutputPersonalAssistantsAndAssignedPokemon(){
-    
-    }
-    
-    public void OutputRoomContent(int roomNumber){
-    
-    }
-    
-    public void OutputPokemonInformation(String GeneticStamp){
-    
-    }
-    
     
 }

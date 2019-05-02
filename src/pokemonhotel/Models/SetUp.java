@@ -97,8 +97,6 @@ public class SetUp {
     }
     
     public void AssignPokemon(Pokemon[] pokemon, Room[] rooms , PersonalAssistant[] personalAssistants){
-        int rejectedDuetoRoom=0;
-        int rejectedDuetoPA =0;
         
         //Sort Pokemon
         for (int i = 0; i < pokemon.length; i++) {
@@ -146,16 +144,11 @@ public class SetUp {
                 if(Assigned == true){
                     //assign the pokemon to room
                      cRoom.setGuest(pokemon[i]);
-                }else{
-                    rejectedDuetoPA++;
                 }
-            }else{
-                rejectedDuetoRoom++;
-            }    
+            }
         }  
         
-        System.out.println("REjecte do to room  " + rejectedDuetoRoom );
-         System.out.println("REjecte do to PA  " + rejectedDuetoPA );
+       
     }
     
     private String GetRandomType(){
