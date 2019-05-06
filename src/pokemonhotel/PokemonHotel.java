@@ -10,6 +10,8 @@ import pokemonhotel.Logical.InformationDisplayer;
 import java.util.Scanner;
 import pokemonhotel.Logical.Collections;
 import pokemonhotel.Logical.InformationCollecter;
+import pokemonhotel.Models.Pokemon;
+import pokemonhotel.Models.Room;
 import pokemonhotel.Models.SetUp;
 
 /**
@@ -42,11 +44,14 @@ public class PokemonHotel {
         
         Scanner scan = new Scanner(System.in);
         
+        InformationCollecter info = new InformationCollecter();
+        info.outputInfoOnPA(collections.getPersonalAssistants());
+        info.outputInfoOnPoke(collections.getPokemon());
+        info.outputInfoOnrooms(collections.getRooms());
         
-        InformationCollecter infocoll = new InformationCollecter();
-        infocoll.outputInfoOnPoke(collections.getPokemon());
-        infocoll.outputInfoOnrooms(collections.getRooms());
-        infocoll.outputInfoOnPA(collections.getPersonalAssistants());
+        for(Room r : collections.getRooms()){
+            System.out.println(r.toString());
+        }
         
         do{
             menu.DisplayOptions();
