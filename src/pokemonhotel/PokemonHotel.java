@@ -8,9 +8,8 @@ package pokemonhotel;
 import pokemonhotel.Logical.Menu;
 import pokemonhotel.Logical.InformationDisplayer;
 import java.util.Scanner;
-import pokemonhotel.Models.PersonalAssistant;
-import pokemonhotel.Models.Pokemon;
-import pokemonhotel.Models.Room;
+import pokemonhotel.Logical.Collections;
+import pokemonhotel.Logical.InformationCollecter;
 import pokemonhotel.Models.SetUp;
 
 /**
@@ -24,33 +23,19 @@ public class PokemonHotel {
      */
     public static void main(String[] args) {
         
-        int maxNumberOfRooms = 100;
-        Room[] rooms;
-        rooms =new Room[maxNumberOfRooms];
-    
-        int maxNumberOfPersonalAssistants = 20;
-        PersonalAssistant[] personalAssistants;
-        personalAssistants = new PersonalAssistant[maxNumberOfPersonalAssistants];
-        
-        int maxNumberOfPokemon = 80;
-        Pokemon[] pokemon;
-        pokemon = new Pokemon[maxNumberOfPokemon];
-        
-        
-        //ArrayList<Pokemon> AssignedPokemon = new ArrayList<>();
-        //ArrayList<Pokemon> UnassignedPokemon = new ArrayList<>();
+        Collections collections = new Collections();
         
        
         SetUp setUp = new SetUp();
         
-        setUp.GenerateRooms(rooms);
-        setUp.GeneratePersonalAssitants(personalAssistants);
-        setUp.GeneratePokemon(pokemon);
+        setUp.GenerateRooms(collections.getRooms());
+        setUp.GeneratePersonalAssitants(collections.getPersonalAssistants());
+        setUp.GeneratePokemon(collections.getPokemon());
         
-        setUp.AssignPokemon(pokemon, rooms, personalAssistants);
+        setUp.AssignPokemon(collections);
         
        
-        InformationDisplayer infoDisplayer = new InformationDisplayer(pokemon,rooms,personalAssistants);
+        InformationDisplayer infoDisplayer = new InformationDisplayer(collections.getPokemon(),collections.getRooms(),collections.getPersonalAssistants());
          
         
         Menu menu = new Menu(infoDisplayer);
@@ -58,9 +43,22 @@ public class PokemonHotel {
         Scanner scan = new Scanner(System.in);
         
         
+        InformationCollecter infocoll = new InformationCollecter();
+        infocoll.outputInfoOnPoke(collections.getPokemon());
+        infocoll.outputInfoOnrooms(collections.getRooms());
+        infocoll.outputInfoOnPA(collections.getPersonalAssistants());
+        
         do{
             menu.DisplayOptions();
-            menu.HandleInput(scan.nextInt());
+            
+           
+            if(scan.hasNextInt()){
+                 menu.HandleInput(scan.nextInt());
+            }else{
+                scan.nextLine();
+            }
+            
+           
         }while(true);
     }
     

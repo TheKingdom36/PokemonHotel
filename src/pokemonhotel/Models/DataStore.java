@@ -63,7 +63,6 @@ public class DataStore {
     {  
         ArrayList<String> filled = new ArrayList<>();
         File file = new File("pokemon.txt");
-        System.out.print(file);
         try (Scanner scan = new Scanner(file)) 
         {
             while(scan.hasNextLine())

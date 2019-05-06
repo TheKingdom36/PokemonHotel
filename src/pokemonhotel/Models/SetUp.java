@@ -6,6 +6,7 @@
 package pokemonhotel.Models;
 
 import java.util.Random;
+import pokemonhotel.Logical.Collections;
 
 /**
  *
@@ -96,7 +97,10 @@ public class SetUp {
         }
     }
     
-    public void AssignPokemon(Pokemon[] pokemon, Room[] rooms , PersonalAssistant[] personalAssistants){
+    public void AssignPokemon(Collections collections){
+        Pokemon[] pokemon = collections.getPokemon();
+        Room[] rooms = collections.getRooms();
+        PersonalAssistant[] personalAssistants = collections.getPersonalAssistants();
         
         //Sort Pokemon
         for (int i = 0; i < pokemon.length; i++) {
@@ -110,15 +114,14 @@ public class SetUp {
             }
         }
         
-        //take single Poke
-        for(int i=0; i< pokemon.length ;i++){
+        //take single Pokemon
+        for (Pokemon pokemon1 : pokemon) {
             Boolean Assigned = false;
             Room cRoom = new Room();
-            
             //Assign to room
             for (Room room : rooms) {
                 //sucess
-                if (room.getGuest() == null && room.getResistanceRating() >= CalcPokemonRating(pokemon[i])) {
+                if (room.getGuest() == null && room.getResistanceRating() >= CalcPokemonRating(pokemon1)) {
                     //add to room
                     //maintain reference to room found
                     cRoom = room;
@@ -126,24 +129,21 @@ public class SetUp {
                     break;
                 }
             }
-
             //if room was assigned try to assign pa
-            if(Assigned == true){
-                
-                 Assigned = false;
+            if (Assigned == true) {
+                Assigned = false;
                 //Assign to personal Assistant
                 for (PersonalAssistant personalAssistant : personalAssistants) {
-                    if (personalAssistant.getPokemonTypesAccepted().contains(pokemon[i].getType()) && personalAssistant.getExpertLevel() >= pokemon[i].getExpertLevel() && personalAssistant.getGuests().size() < 5) {
-                        personalAssistant.AddGuest(pokemon[i]);
+                    if (personalAssistant.getPokemonTypesAccepted().contains(pokemon1.getType()) && personalAssistant.getExpertLevel() >= pokemon1.getExpertLevel() && personalAssistant.getGuests().size() < 5) {
+                        personalAssistant.AddGuest(pokemon1);
                         Assigned = true;
                         break;
                     }
                 }
-               
                 //Failure to assign pa
-                if(Assigned == true){
+                if (Assigned == true) {
                     //assign the pokemon to room
-                     cRoom.setGuest(pokemon[i]);
+                    cRoom.setGuest(pokemon1);
                 }
             }
         }  

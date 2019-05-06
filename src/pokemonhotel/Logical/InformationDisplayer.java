@@ -44,9 +44,13 @@ public class InformationDisplayer {
     public void OutputPokemonInformation(int GeneticStamp){
     
     }
+     
+    public void OutputTotalNumberOfPokemonHotelCanAccommodate(){
+    
+    }
     
     
-     public void OuputAssignedPokemon(){
+    public void OuputAssignedPokemon(){
     
     }
     
@@ -54,9 +58,7 @@ public class InformationDisplayer {
     
     }
     
-    
-    public void OutputTotalNumberOfPokemonHotelCanAccommodate(){
+    public void OutputUnoccupiedRooms(){
     
     }
-    
 }
