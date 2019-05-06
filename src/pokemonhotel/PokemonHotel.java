@@ -56,7 +56,6 @@ public class PokemonHotel {
         do{
             menu.DisplayOptions();
             
-           
             if(scan.hasNextInt()){
                  menu.HandleInput(scan.nextInt());
             }else{
