@@ -5,9 +5,12 @@
  */
 package pokemonhotel.Logical;
 
+import pokemonhotel.Models.AirPokemon;
+import pokemonhotel.Models.LandPokemon;
 import pokemonhotel.Models.PersonalAssistant;
 import pokemonhotel.Models.Pokemon;
 import pokemonhotel.Models.Room;
+import pokemonhotel.Models.WaterPokemon;
 
 /**
  *
@@ -42,6 +45,15 @@ public class InformationDisplayer {
                 for (int j = 0; j < personalAssistant.getGuests().size(); j++) {
                     System.out.println(personalAssistant.getGuests().get(j));
                     
+                    //Find Category of Pokemon
+                    if(personalAssistant.getGuests().get(j).getClass() == LandPokemon.class){
+                        System.out.println("Pokemon is part of Land category");
+                    }else if(personalAssistant.getGuests().get(j).getClass() == AirPokemon.class){
+                        System.out.println("Pokemon is part of Air category");
+                    }else if(personalAssistant.getGuests().get(j).getClass() == WaterPokemon.class){
+                        System.out.println("Pokemon is part of Water category");
+                    }
+                    
                     //Find Pokemon Room
                      for(Room room:collections.getRooms()){
                         if(room.getGuest() == personalAssistant.getGuests().get(j)){
@@ -51,7 +63,10 @@ public class InformationDisplayer {
                      }
                 }
             }
+             System.out.println("--------------------------------------------------------------------------");
+
         }
+        
     }
     
     //Abraham
