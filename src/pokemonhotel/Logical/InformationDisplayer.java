@@ -35,13 +35,22 @@ public class InformationDisplayer {
             System.out.println("Personal Assistant");
             System.out.println(personalAssistant.toString());
             
+            
+            
             System.out.println("Guests");
             if (personalAssistant.getGuests().size() > 0) {
                 for (int j = 0; j < personalAssistant.getGuests().size(); j++) {
                     System.out.println(personalAssistant.getGuests().get(j));
+                    
+                    //Find Pokemon Room
+                     for(Room room:collections.getRooms()){
+                        if(room.getGuest() == personalAssistant.getGuests().get(j)){
+                            System.out.println("Guest Room Number: " + room.getRoomNumber());
+                        }
+                            
+                     }
                 }
             }
-            System.out.println("--------------------------------------------------------------------------");
         }
     }
     
@@ -121,6 +130,14 @@ public class InformationDisplayer {
                  System.out.println("--------------------------------------------------------------------------");
             }
            
+        }
+    }
+    
+    public void OutputUnassignedPersonalAssistants(){
+        for(PersonalAssistant pa:collections.getPersonalAssistants()){
+            if(pa.getGuests().isEmpty()){
+                System.out.println(pa.toString());
+            }
         }
     }
 }

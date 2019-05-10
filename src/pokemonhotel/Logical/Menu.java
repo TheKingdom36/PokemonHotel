@@ -31,6 +31,7 @@ public class Menu {
         System.out.println("Option 6: Output assigned Pokemon");
         System.out.println("Option 7: Output total number of pokemon the hotel can accomdate");
         System.out.println("Option 8: Output Unoccupied Rooms");
+        System.out.println("Option 9: Output Unassigned Personal Assistants");
     }
     
     /**
@@ -88,6 +89,11 @@ public class Menu {
             
             case 8:{
                 infoDisplayer.OutputUnoccupiedRooms();
+                break;
+            }
+            
+            case 9:{
+                infoDisplayer.OutputUnassignedPersonalAssistants();
                 break;
             }
             
