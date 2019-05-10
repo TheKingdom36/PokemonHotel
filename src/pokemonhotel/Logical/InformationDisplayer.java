@@ -50,6 +50,19 @@ public class InformationDisplayer {
         for (Room room : collections.getRooms()) {
             if (roomNumber == room.getRoomNumber()) {
                 System.out.println(room.toString());
+                
+                if(room.getGuest() != null){
+                    for(PersonalAssistant pa: collections.getPersonalAssistants()){
+                        for(Pokemon poke:pa.getGuests()){
+                            if(poke == room.getGuest()){
+                                System.out.println("PersonalAssistant of " +room.getGuest().getName()+" is " + pa.toString());
+                                 break;
+                            }
+                           
+                        }
+                    }
+                }
+                break;
             }
         }
     }
@@ -59,7 +72,25 @@ public class InformationDisplayer {
         for (Pokemon pokemon : collections.getPokemon()) {
             if (GeneticStamp == pokemon.getGenericStamp()) {
                 System.out.println(pokemon.toString());
-                System.out.println("--------------------------------------------------------------------------");
+               
+                for(PersonalAssistant pa: collections.getPersonalAssistants()){
+                    for(Pokemon guest:pa.getGuests()){
+                        if(guest == pokemon){
+                            System.out.println(pa.toString());
+                            break;
+                        }
+                    }
+                    
+                }
+                
+                for(Room room: collections.getRooms()){
+                    if(room.getGuest() == pokemon){
+                        System.out.println(room.toString());
+                        break;
+                    }
+                    
+                }
+            
             }
         }
     }
