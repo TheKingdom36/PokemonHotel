@@ -3,10 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package pokemonhotel.Models;
+package pokemonhotel.Logical;
 
 import java.util.Random;
 import pokemonhotel.Logical.Collections;
+import pokemonhotel.Models.AirPokemon;
+import pokemonhotel.Models.LandPokemon;
+import pokemonhotel.Models.PersonalAssistant;
+import pokemonhotel.Models.Pokemon;
+import pokemonhotel.Models.Room;
+import pokemonhotel.Models.WaterPokemon;
 
 /**
  *
@@ -20,16 +26,23 @@ public class SetUp {
        ranGen = new Random();
     }
     
+    /**
+     * Generates Rooms and stores in placed in array
+     * @param rooms array of rooms which the method will populate
+     */
     public void GenerateRooms(Room[] rooms){
         int maxResistenceRating = 7;
         int minResistenceRating = 3;
-        
         
         for(int i=0; i< rooms.length;i++){
            rooms[i] = new Room(i+1,minResistenceRating+ranGen.nextInt(maxResistenceRating-minResistenceRating +1));
         }
     }
     
+    /**
+     * Generates personalAssistants and stores in placed in array
+     * @param personalAssistants array of personalAssistants which the method will populate
+     */
     public void GeneratePersonalAssitants(PersonalAssistant[] personalAssistants){
         
         int maxExpertValue = 6;
@@ -47,6 +60,7 @@ public class SetUp {
            String randomType;
            for( int j=0 ; j < numberOfTypesAccepted; j++){
               
+               //Performs do loop until a type is choosen which does not match any other type assigned to the personalAssistant
               do{
                 randomType = GetRandomType();
               }while(personalAssistant.getPokemonTypesAccepted().contains(randomType)== true);
@@ -58,6 +72,11 @@ public class SetUp {
         }
     }
     
+    
+    /**
+     * Generates Pokemon and stores in placed in array
+     * @param pokemon array of pokemon which the method will populate
+     */
      public void GeneratePokemon(Pokemon[] pokemon)
     {
         for (int i = 0; i < pokemon.length; i++)
@@ -101,6 +120,10 @@ public class SetUp {
         }
     }
     
+     /**
+      * AssignPokemon attempts to assign Pokemon to a Room and PersonalAssistant
+      * @param collections Object containing required collections of objects
+      */
     public void AssignPokemon(Collections collections){
         Pokemon[] pokemon = collections.getPokemon();
         Room[] rooms = collections.getRooms();
@@ -119,10 +142,11 @@ public class SetUp {
         }
         
         Boolean Assigned;
-        //take single Pokemon
+        //take each Pokemon
         for (Pokemon poke : pokemon) {
             Assigned = false;
             Room currRoom = new Room();
+             
             //Assign to room
             for (Room room : rooms) {
                 //sucess
@@ -135,14 +159,14 @@ public class SetUp {
                 }
             }
             
-            //if room was assigned try to assign pa
+            //If room was assigned try to assign personalAssistant
             if (Assigned == true) {
                 Assigned = false;
-                // attempt assign to personal Assistant
+                // attempt to assign Pokemon to Personal Assistant
                 for (PersonalAssistant personalAssistant : personalAssistants) {
                     if (personalAssistant.getPokemonTypesAccepted().contains(poke.getType()) 
                             && personalAssistant.getExpertLevel() >= poke.getExpertLevel() 
-                                && personalAssistant.getGuests().size() < 5) {
+                                && personalAssistant.getGuests().size() < personalAssistant.getMaxNumberOfGuests()) {
                         
                         personalAssistant.AddGuest(poke);
                         Assigned = true;
@@ -166,6 +190,10 @@ public class SetUp {
        
     }
     
+    /**
+     * Returns a randomly selected Pokemon type as a String
+     * @return Randomly chosen String
+     */
     private String GetRandomType(){
         switch(ranGen.nextInt(2)){
             case 0:
@@ -179,6 +207,11 @@ public class SetUp {
         return "Error";
     }
     
+    /**
+     * Returns a rating calculated using a Pokemon
+     * @param poke Pokemon to be used in calculation
+     * @return result of calculation
+     */
     private int CalcPokemonRating(Pokemon poke){
         return (poke.getSpecialAttackRating() + poke.getSpeedRating())/3;
     }

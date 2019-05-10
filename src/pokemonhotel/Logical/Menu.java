@@ -19,6 +19,9 @@ public class Menu {
         this.infoDisplayer = infoDisplayer;
     }
     
+     /**
+     * Prints to the screen all available user options
+     */
     public void DisplayOptions(){
         System.out.println("Option 1: Output all Pokemon");
         System.out.println("Option 2: Output Personal Assistants and Pokemon they have");
@@ -30,6 +33,10 @@ public class Menu {
         System.out.println("Option 8: Output Unoccupied Rooms");
     }
     
+    /**
+     * Handles user input for the menu 
+     * @param input Value used to determine which option will be selected
+     */
     public void HandleInput(int input){
         switch(input){
             case 1:{

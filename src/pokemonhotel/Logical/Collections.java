@@ -15,17 +15,25 @@ import pokemonhotel.Models.Room;
  * @author Daniel Murphy
  */
 public class Collections {
-    private int maxNumberOfRooms = 100;
-    private Room[] rooms;
+    
+    private final int maxNumberOfRooms = 100;
+    //Holds all created Rooms
+    private final Room[] rooms;
 
-    private int maxNumberOfPersonalAssistants = 20;
-    private PersonalAssistant[] personalAssistants;
+    private final int maxNumberOfPersonalAssistants = 20;
+    //Holds all created PersonalAssistants
+    private final PersonalAssistant[] personalAssistants;
 
-    private int maxNumberOfPokemon = 80;
-    private Pokemon[] pokemon;
+    private final int maxNumberOfPokemon = 80;
+    
+    //Holds all created Pokemon
+    private final Pokemon[] pokemon;
 
-    private ArrayList<Pokemon> AssignedPokemon; 
-    private ArrayList<Pokemon> UnassignedPokemon;
+    //Holds Pokemon which can stay at the hotel
+    private final ArrayList<Pokemon> AssignedPokemon; 
+    
+    //Holds Pokemon which cant stay at the hotel
+    private final ArrayList<Pokemon> UnassignedPokemon;
 
     public Room[] getRooms() {
         return rooms;
@@ -46,17 +54,13 @@ public class Collections {
     public ArrayList<Pokemon> getUnassignedPokemon() {
         return UnassignedPokemon;
     }
-       
         
-        
-       
-        
-        public Collections(){
-            rooms = new Room[maxNumberOfRooms];
-            personalAssistants = new PersonalAssistant[maxNumberOfPersonalAssistants];
-            pokemon = new Pokemon[maxNumberOfPokemon];
-            this.AssignedPokemon = new ArrayList<>();
-            this.UnassignedPokemon = new ArrayList<>();
-        }
+    public Collections(){
+        rooms = new Room[maxNumberOfRooms];
+        personalAssistants = new PersonalAssistant[maxNumberOfPersonalAssistants];
+        pokemon = new Pokemon[maxNumberOfPokemon];
+        this.AssignedPokemon = new ArrayList<>();
+        this.UnassignedPokemon = new ArrayList<>();
+    }
         
 }

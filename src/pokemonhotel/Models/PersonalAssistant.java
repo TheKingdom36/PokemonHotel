@@ -20,12 +20,22 @@ public class PersonalAssistant {
     //Pokenmon Accepted types
     private ArrayList<String> pokemonTypesAccepted;
     
+    //Max number of guests
+    private int MaxNumberOfGuests;
+
+    public int getMaxNumberOfGuests() {
+        return MaxNumberOfGuests;
+    }
+    
     //PokemonGuests
     private ArrayList<Pokemon> guests;
+    
+    
     
     public PersonalAssistant(){
         this.pokemonTypesAccepted = new ArrayList<>();
         this.guests = new ArrayList<>();
+        this.MaxNumberOfGuests = 5;
     }
     
     public PersonalAssistant(String name,int expertLevel){
@@ -33,6 +43,7 @@ public class PersonalAssistant {
         this.guests = new ArrayList<>();
         this.name = name;
         this.expertLevel = expertLevel;
+         this.MaxNumberOfGuests = 5;
     }
 
     public String getName() {
