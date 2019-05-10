@@ -37,7 +37,7 @@ public class PokemonHotel {
         setUp.AssignPokemon(collections);
         
        
-        InformationDisplayer infoDisplayer = new InformationDisplayer(collections.getPokemon(),collections.getRooms(),collections.getPersonalAssistants());
+        InformationDisplayer infoDisplayer = new InformationDisplayer(collections);
          
         
         Menu menu = new Menu(infoDisplayer);
