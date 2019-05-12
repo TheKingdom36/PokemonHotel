@@ -1,4 +1,5 @@
     
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -13,7 +14,7 @@ package pokemonhotel.Models;
 public class Pokemon
 {
     private String                  name;
-    private int             genericStamp;
+    private int             geneticStamp;
     private String                 type;
     private int      specialAttackRating;
     private int              speedRating;
@@ -25,7 +26,7 @@ public class Pokemon
             int speedRating, int expertLevel, int roomNumber, int resistanceRating)
     {
         this.name                = name;
-        this.genericStamp        = genericStamp;
+        this.geneticStamp        = geneticStamp;
         this.type                = type;
         this.specialAttackRating = specialAttackRating;
         this.speedRating         = speedRating;
@@ -42,14 +43,14 @@ public class Pokemon
         this.name = name;
     }
 
-    public int getGenericStamp()
+    public int getGeneticStamp()
     {
-        return genericStamp;
+        return geneticStamp;
     }
 
-    public void setGenericStamp(int genericStamp)
+    public void setGeneticStamp(int genericStamp)
     {
-        this.genericStamp = genericStamp;
+        this.geneticStamp = genericStamp;
     }
 
     public String getType()
@@ -96,6 +97,6 @@ public class Pokemon
     @Override
     public String toString()
     {
-        return "Pokemon{" + "name=" + name + ", genericStamp=" + genericStamp + ", type=" + type + ", specialAttackRating=" + specialAttackRating + ", speedRating=" + speedRating + ", expertLevel=" + expertLevel +'}';
+        return String.format((char)27 + "[4;34m POKEMON : Name: %-12s Genetic Stamp: %-12s Type: %-12s Special Attack Rating: %-12s Speed Rating: %-12s Expert Level: %-3s", name, geneticStamp, type, specialAttackRating, speedRating, expertLevel);
     }   
 }

@@ -6,7 +6,6 @@
 package pokemonhotel.Logical;
 
 import java.util.Random;
-import pokemonhotel.Logical.Collections;
 import pokemonhotel.Models.AirPokemon;
 import pokemonhotel.Models.LandPokemon;
 import pokemonhotel.Models.PersonalAssistant;
@@ -88,7 +87,7 @@ public class SetUp {
                     LandPokemon landPokemon = new LandPokemon();
                     landPokemon.setName(dataStore.getNames().get(ranGen.nextInt(dataStore.getNames().size())));
                     landPokemon.setExpertLevel(ranGen.nextInt(10-1)+1);
-                    landPokemon.setGenericStamp(i);
+                    landPokemon.setGeneticStamp(i);
                     landPokemon.setSpecialAttackRating(ranGen.nextInt(15-5)+5);
                     landPokemon.setSpeedRating(ranGen.nextInt(15-5)+5);
                     landPokemon.setType(GetRandomType());
@@ -98,7 +97,7 @@ public class SetUp {
                     AirPokemon airPokemon = new AirPokemon();
                     airPokemon.setName(dataStore.getNames().get(ranGen.nextInt(dataStore.getNames().size())));
                     airPokemon.setExpertLevel(ranGen.nextInt(10-1)+1);
-                    airPokemon.setGenericStamp(i);
+                    airPokemon.setGeneticStamp(i);
                     airPokemon.setSpecialAttackRating(ranGen.nextInt(15-5)+5);
                     airPokemon.setSpeedRating(ranGen.nextInt(15-5)+5);
                     airPokemon.setType(GetRandomType());
@@ -108,7 +107,7 @@ public class SetUp {
                     WaterPokemon waterPokemon = new WaterPokemon();
                     waterPokemon.setName(dataStore.getNames().get(ranGen.nextInt(dataStore.getNames().size())));
                     waterPokemon.setExpertLevel(ranGen.nextInt(10-1)+1);
-                    waterPokemon.setGenericStamp(i);
+                    waterPokemon.setGeneticStamp(i);
                     waterPokemon.setSpecialAttackRating(ranGen.nextInt(15-5)+5);
                     waterPokemon.setSpeedRating(ranGen.nextInt(15-5)+5);
                     waterPokemon.setType(GetRandomType());
@@ -151,7 +150,7 @@ public class SetUp {
             for (Room room : rooms) {
                 //sucess
                 if (room.getGuest() == null && room.getResistanceRating() >= CalcPokemonRating(poke)) {
-                    //add to room
+                   //add to room
                     //maintain reference to room found
                     currRoom = room;
                     Assigned = true;

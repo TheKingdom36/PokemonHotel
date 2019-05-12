@@ -58,6 +58,7 @@ public class Room {
         this.guest = Guest;
     }
     
+    @Override
     public String toString(){
         return "RoomNumber: "+this.roomNumber + " ResistanceRating: " + this.resistanceRating + " Guest: " + this.guest; 
     }

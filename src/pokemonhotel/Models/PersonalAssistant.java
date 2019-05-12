@@ -43,7 +43,7 @@ public class PersonalAssistant {
         this.guests = new ArrayList<>();
         this.name = name;
         this.expertLevel = expertLevel;
-         this.MaxNumberOfGuests = 5;
+        this.MaxNumberOfGuests = 5;
     }
 
     public String getName() {

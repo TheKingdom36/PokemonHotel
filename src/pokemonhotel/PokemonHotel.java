@@ -9,6 +9,7 @@ import pokemonhotel.Logical.Menu;
 import pokemonhotel.Logical.InformationDisplayer;
 import java.util.Scanner;
 import pokemonhotel.Logical.Collections;
+import pokemonhotel.Logical.IntegerAsker;
 import pokemonhotel.Logical.SetUp;
 
 /**
@@ -22,7 +23,7 @@ public class PokemonHotel {
      */
     public static void main(String[] args) {
         
-        Scanner scan = new Scanner(System.in);
+        IntegerAsker intAsker = new IntegerAsker(System.in,System.out);
         Collections collections = new Collections();
         
         SetUp setUp = new SetUp();
@@ -34,20 +35,20 @@ public class PokemonHotel {
         InformationDisplayer infoDisplayer = new InformationDisplayer(collections);
          
         Menu menu = new Menu(infoDisplayer);
-        
-        System.out.println("/////////////////////////////////////////////////////////////////////////////////////");
-        System.out.println();
+
         do{
             menu.DisplayOptions();
-            System.out.print("Enter value: ");
+            System.out.print("\u001B[31m" + " Enter value:");
             
-            if(scan.hasNextInt()){
-                 menu.HandleInput(scan.nextInt());
-            }else{
-                scan.nextLine();
-            } 
             
-            System.out.println("/////////////////////////////////////////////////////////////////////////////////////");
+            
+              
+                
+                menu.HandleInput(intAsker.ask(""));
+                    
+            
+            
+            //System.out.println("/////////////////////////////////////////////////////////////////////////////////////");
             System.out.println();
         }while(true);
     }

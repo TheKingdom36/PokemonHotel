@@ -10,10 +10,7 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-/**
- *
- * @author Daniel Murphy
- */
+
 public class DataStore {
     
     
@@ -41,28 +38,46 @@ public class DataStore {
     
     
     
-    public DataStore(String NamesfilePath){
-       this.Names = fillNames();
+    public DataStore(String NamesFilePath){
+       this.Names = ReadFromFile(NamesFilePath);
        
        LandTypes = new ArrayList<>();
        WaterTypes = new ArrayList<>();
        AirTypes = new ArrayList<>();
        
-       
-       //TODO Remove
-       LandTypes.add("Rock");
+       LandTypes.add("Normal");
+       LandTypes.add("Grass");
+       LandTypes.add("Fighting");
+       LandTypes.add("Poison");
        LandTypes.add("Ground");
+       LandTypes.add("Rock");
+       LandTypes.add("Steel");
+       
        AirTypes.add("Fire");
-       AirTypes.add("Ground");
+       AirTypes.add("Electric");
+       AirTypes.add("Flying");
+       AirTypes.add("Psychic");
+       AirTypes.add("Bug");
+       AirTypes.add("Ghost");
+       AirTypes.add("Dragon");
+       AirTypes.add("Fairy");
+       
        WaterTypes.add("Water");
+       WaterTypes.add("Ice");
+       WaterTypes.add("Dark");
        
        
     }
     
-    private ArrayList<String> fillNames() 
+    /**
+     * Returns a string arrayList which is read from a file
+     * @param filePath the location of the file to be read from
+     * @return The information from the file
+     */
+    private ArrayList<String> ReadFromFile(String filePath) 
     {  
         ArrayList<String> filled = new ArrayList<>();
-        File file = new File("pokemon.txt");
+        File file = new File(filePath);
         try (Scanner scan = new Scanner(file)) 
         {
             while(scan.hasNextLine())
